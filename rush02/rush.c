@@ -5,14 +5,14 @@ void		ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-void		w_loop(int pos_x, int pos_y, int w, int h)
+void		loop(int pos_x, int pos_y, int w, int h)
 {
 	if (pos_y == 0 ||  pos_y == h -1)
 	{
-		if (pos_y == 0 && (pos_x == 0 || pos_x == w -1))
+		if (pos_x == 0 && (pos_y == 0  || pos_y ==  h - 1))
 		ft_putchar('A');
 		
-		else if (pos_y == h -1 && (pos_x == 0 ||  pos_x == w -1))
+		else if (pos_x == w -1  && (pos_y == 0 ||  pos_y == h -1))
 		ft_putchar('C');
 		
 		else
@@ -42,7 +42,7 @@ void		rush(int x, int y)
 	{
 		while (pos_x < w)
 		{
-			w_loop(pos_y, pos_x, h, w);
+			loop(pos_y, pos_x, h, w);
 			pos_x++;
 		}
 		pos_y++;
@@ -55,6 +55,6 @@ void		rush(int x, int y)
 int		main()
 {
 	
-	rush(10, 10);
+	rush(14, 6);
 	return (0);
 }
