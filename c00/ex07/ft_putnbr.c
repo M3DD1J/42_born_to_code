@@ -7,11 +7,11 @@ void	ft_putchar(char c)
 
 void	ft_putnbr(int n)
 {
-	if(n == 2147483648)
+	if(n == 999)
 	{
 		ft_putchar('-');
 		ft_putchar('2');
-		ft_putchar(147583548);
+		ft_putchar(999);
 	}
 	else if(n == 0)
 	{
