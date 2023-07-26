@@ -1,0 +1,257 @@
+INTRODUZIONE ALLA PROGRAMMAZIONE IN C
+
+Cos'e' un puntatore
+
+
+  Un puntatore e' un tipo di dato, una variabile che contiene l'indirizzo 
+  in memoria di un'altra variabile. Si possono avere puntatori a qualsiasi tipo
+  di variabile.
+  La dichiarazione di un puntatore include il tipo dell'oggetto a cui il 
+  puntatore punta.  
+  In C ogni variabile ha due tipi di valori: una locazione e un valore 
+  contenuto in quella locazione.
+	
+  L' operatore & (operatore unario, o monadico) fornisce l'indirizzo di una 
+  variabile.
+  L' operatore * (operatore indiretto, o non referenziato) da' il contenuto 
+  dell'oggetto a cui punta un puntatore.
+
+  Per dichiarare un puntatore ad una variabile, l'istruzione e':
+
+     int *pointer;	
+
+  Nota: e' obbligatorio associare un puntatore ad un tipo particolare; per
+        esempio, non e' possibile assegnare l'indirizzo di uno short int ad un 
+        long int.
+
+  Consideriamo gli effetti del seguente codice:
+	
+	int *pointer;  /* dichiara pointer come un puntatore a int */
+	int x=1,y=2;
+	
+  (1)	pointer= &x;   /* assegna a pointer l'indirizzo di x */
+  (2)	y=*pointer;    /* assegna a y il contenuto di pointer */
+  (3)   x=pointer      /* assegna ad x l'indirizzo contenuto in pointer */
+  (4)	*pointer=3;    /* assegna al contenuto di pointer il valore 3 */
+
+  Vale la pena considerare cosa succede al "livello macchina" in memoria per
+  capire completamente come funzionano i puntatori.
+  Supponiamo che la variabile x si trovi nella locazione di memoria 100, y nella
+  200 e pointer nella 1000 (ricordiamo che pointer e' una variabile a tutti gli
+  effetti, e cosi' il suo valore necessita di essere memorizzato da qualche
+  parte; e' la caratteristica del valore dei puntatori che risulta nuova). 
+
+  L'istruzione (1) fa si che pointer punti alla locazione di memoria 100
+  (quella di x). 
+  La (2) fa si che y assuma valore 1 (il valore di x). 
+  La (3) fa si che x assuma valore 100 (cioe' il valore di pointer).
+  La (4) fa si che il valore del contenuto di pointer sia 3 (quindi x=3).
+
+  Notate che le assegnazioni x=1 e y=2 ovviamente caricano questi valori nelle
+  variabili; pointer e' dichiarato come puntatore ad un intero e vi e' 
+  assegnato l'indirizzo di x (&x), cosi' pointer verra' caricato con il valore
+  100.
+  Successivamente, y prende l'assegnazione del contenuto di pointer. In questo
+  esempio, pointer punta attualmente alla locazione di memoria 100 (la locazione
+  di x). Cosi' ad y viene assegnato il valore di x (che' e' 1).
+  Abbiamo gia' visto che il C non e' molto meticoloso riguardo all'assegnazione
+  di valori di tipo differente. Cosi' e' perfettamente legale (sebbene non sia
+  comune a tutti) assegnare il valore corrente di pointer ad x; in questo 
+  momento il valore di pointer e' 100.
+  Alla fine possiamo assegnare un valore al contenuto di pointer (*ip).
+
+  Quindi in merito ai puntatori possiamo avre tre possibili valori:
+	pointer       contenuto o valore della variabile pointer
+                      (indirizzo della locazione di memoria a cui punta)
+	&pointer      indirizzo fisico della locazione di memoria del puntatore
+	*pointer      contenuto della locazione di memoria a cui punta 
+
+  NB. Quando un puntatore viene dichiarato non punta a nulla!
+      Per poterlo utilizzare deve puntare a qualcosa!
+      E' infatti un errore comune non assegnare un indirizzo di memoria a un 
+      puntatore prima di usarlo.
+      Cosi':
+
+         int *ip;
+
+         *ip=100;
+
+      generera' un errore (crash di programma).
+      L'utilizzo corretto e' il seguente:
+
+         int *ip;
+         int x;
+
+         ip=&x;
+         *ip=100;
+
+      Un metodo comune per ovviare al problema dell'assegnazione dell'indirizzo 
+      e' quello di utilizzare la funzione di libreria standard malloc(), che 
+      permette un'allocazione dinamica della memoria; e' definita come 
+      char *malloc(int number_of_bytes).
+
+      Ad esempio:  
+
+         int *p; 
+      	 p = (int *) malloc(100); 
+      oppure:
+	 p= (int *) malloc(100*sizeof(int))
+
+  Si possono fare operazioni aritmetiche intere con i puntatori:
+	
+	float *flp, *flq;
+	*flp=*flp+10;
+	++*flp;
+	(*flp)++;
+	flq=flp;    
+
+  Nota: un puntatore ad una variabile di qualsiasi tipo e' un indirizzo in
+        memoria (il quale e' un indirizzo intero). Un puntatore per definizione
+        NON e' un intero.
+
+  La ragione per cui associamo un puntatore ad un tipo di dato e' quella per
+  cui e' possibile riconoscere quanti bytes contiene il dato. Quando si 
+  incrementa un puntatore si cresce il puntatore di un "blocco" di 
+  memoria. 
+  Cosi' per un puntatore a char ++ch_ptr aggiunge 1 byte all'indirizzo, 
+  per un intero o un float ++ip aggiunge 4 byte all'indirizzo.
+
+  Consideriamo una variabile float (fl) ed un puntatore ad un float (flp); 
+  ricordiamo che ad un float corrispondono 4 bytes.
+  Assumiamo che flp punti ad fl; se poi incrementiamo il puntatore (++flp),
+  questo si sposta dalla posizione a cui puntava originariamente di 4 bytes in
+  avanti, e puntera' quindi al float successivo. D'altra parte, se aggiungiamo 
+  2 al puntatore (flp+2), questo si sposta di due posizioni float, cioe' di 8 
+  bytes.
+
+
+
+INTRODUZIONE ALLA PROGRAMMAZIONE IN C
+
+Cos'e' un puntatore
+
+
+  Un puntatore e' un tipo di dato, una variabile che contiene l'indirizzo 
+  in memoria di un'altra variabile. Si possono avere puntatori a qualsiasi tipo
+  di variabile.
+  La dichiarazione di un puntatore include il tipo dell'oggetto a cui il 
+  puntatore punta.  
+  In C ogni variabile ha due tipi di valori: una locazione e un valore 
+  contenuto in quella locazione.
+	
+  L' operatore & (operatore unario, o monadico) fornisce l'indirizzo di una 
+  variabile.
+  L' operatore * (operatore indiretto, o non referenziato) da' il contenuto 
+  dell'oggetto a cui punta un puntatore.
+
+  Per dichiarare un puntatore ad una variabile, l'istruzione e':
+
+     int *pointer;	
+
+  Nota: e' obbligatorio associare un puntatore ad un tipo particolare; per
+        esempio, non e' possibile assegnare l'indirizzo di uno short int ad un 
+        long int.
+
+  Consideriamo gli effetti del seguente codice:
+	
+	int *pointer;  /* dichiara pointer come un puntatore a int */
+	int x=1,y=2;
+	
+  (1)	pointer= &x;   /* assegna a pointer l'indirizzo di x */
+  (2)	y=*pointer;    /* assegna a y il contenuto di pointer */
+  (3)   x=pointer      /* assegna ad x l'indirizzo contenuto in pointer */
+  (4)	*pointer=3;    /* assegna al contenuto di pointer il valore 3 */
+
+  Vale la pena considerare cosa succede al "livello macchina" in memoria per
+  capire completamente come funzionano i puntatori.
+  Supponiamo che la variabile x si trovi nella locazione di memoria 100, y nella
+  200 e pointer nella 1000 (ricordiamo che pointer e' una variabile a tutti gli
+  effetti, e cosi' il suo valore necessita di essere memorizzato da qualche
+  parte; e' la caratteristica del valore dei puntatori che risulta nuova). 
+
+  L'istruzione (1) fa si che pointer punti alla locazione di memoria 100
+  (quella di x). 
+  La (2) fa si che y assuma valore 1 (il valore di x). 
+  La (3) fa si che x assuma valore 100 (cioe' il valore di pointer).
+  La (4) fa si che il valore del contenuto di pointer sia 3 (quindi x=3).
+
+  Notate che le assegnazioni x=1 e y=2 ovviamente caricano questi valori nelle
+  variabili; pointer e' dichiarato come puntatore ad un intero e vi e' 
+  assegnato l'indirizzo di x (&x), cosi' pointer verra' caricato con il valore
+  100.
+  Successivamente, y prende l'assegnazione del contenuto di pointer. In questo
+  esempio, pointer punta attualmente alla locazione di memoria 100 (la locazione
+  di x). Cosi' ad y viene assegnato il valore di x (che' e' 1).
+  Abbiamo gia' visto che il C non e' molto meticoloso riguardo all'assegnazione
+  di valori di tipo differente. Cosi' e' perfettamente legale (sebbene non sia
+  comune a tutti) assegnare il valore corrente di pointer ad x; in questo 
+  momento il valore di pointer e' 100.
+  Alla fine possiamo assegnare un valore al contenuto di pointer (*ip).
+
+  Quindi in merito ai puntatori possiamo avre tre possibili valori:
+	pointer       contenuto o valore della variabile pointer
+                      (indirizzo della locazione di memoria a cui punta)
+	&pointer      indirizzo fisico della locazione di memoria del puntatore
+	*pointer      contenuto della locazione di memoria a cui punta 
+
+  NB. Quando un puntatore viene dichiarato non punta a nulla!
+      Per poterlo utilizzare deve puntare a qualcosa!
+      E' infatti un errore comune non assegnare un indirizzo di memoria a un 
+      puntatore prima di usarlo.
+      Cosi':
+
+         int *ip;
+
+         *ip=100;
+
+      generera' un errore (crash di programma).
+      L'utilizzo corretto e' il seguente:
+
+         int *ip;
+         int x;
+
+         ip=&x;
+         *ip=100;
+
+      Un metodo comune per ovviare al problema dell'assegnazione dell'indirizzo 
+      e' quello di utilizzare la funzione di libreria standard malloc(), che 
+      permette un'allocazione dinamica della memoria; e' definita come 
+      char *malloc(int number_of_bytes).
+
+      Ad esempio:  
+
+         int *p; 
+      	 p = (int *) malloc(100); 
+      oppure:
+	 p= (int *) malloc(100*sizeof(int))
+
+  Si possono fare operazioni aritmetiche intere con i puntatori:
+	
+	float *flp, *flq;
+	*flp=*flp+10;
+	++*flp;
+	(*flp)++;
+	flq=flp;    
+
+  Nota: un puntatore ad una variabile di qualsiasi tipo e' un indirizzo in
+        memoria (il quale e' un indirizzo intero). Un puntatore per definizione
+        NON e' un intero.
+
+  La ragione per cui associamo un puntatore ad un tipo di dato e' quella per
+  cui e' possibile riconoscere quanti bytes contiene il dato. Quando si 
+  incrementa un puntatore si cresce il puntatore di un "blocco" di 
+  memoria. 
+  Cosi' per un puntatore a char ++ch_ptr aggiunge 1 byte all'indirizzo, 
+  per un intero o un float ++ip aggiunge 4 byte all'indirizzo.
+
+  Consideriamo una variabile float (fl) ed un puntatore ad un float (flp); 
+  ricordiamo che ad un float corrispondono 4 bytes.
+  Assumiamo che flp punti ad fl; se poi incrementiamo il puntatore (++flp),
+  questo si sposta dalla posizione a cui puntava originariamente di 4 bytes in
+  avanti, e puntera' quindi al float successivo. D'altra parte, se aggiungiamo 
+  2 al puntatore (flp+2), questo si sposta di due posizioni float, cioe' di 8 
+  bytes.
+
+
+
+FONTE:	http://www.science.unitn.it/~fiorella/guidac/guidac056.html
