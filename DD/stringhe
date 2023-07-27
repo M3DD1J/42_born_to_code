@@ -1,0 +1,81 @@
+INTRODUZIONE ALLA PROGRAMMAZIONE IN C
+
+Stringhe
+
+
+  In C le stringhe sono definite come array di caratteri. Ad esempio, la
+  seguente istruzione definisce una stringa di 50 caratteri:
+   
+      char name[50];
+   
+  Il C non ha pero' un sistema maneggevole per costruire le stringhe, cosi 
+  le seguenti assegnazioni non sono valide:
+      char firstname[50], lastname[50], fullname[50];
+      firstname = "Mario"                    /* illegale */
+      lastname  = "Rossi"                    /* illegale */
+      fullname  = "Sig."+firstname+lastname  /* illegale */
+ 
+  Esiste pero' una libreria di routines per il trattamento delle stringhe
+  ("< string.h >").
+
+  Per maneggiare le stringhe si possono usare puntatori ad array di char 
+  (come vedremo piu' avanti).
+  
+  Per stampare una stringa si usa printf() con lo speciale carattere di 
+  controllo %s:
+  
+      printf("%s",nome);   
+
+  Nota: e' sufficiente avere il nome della stringa.
+
+  Al fine di permettere l'utilizzo di stringhe con lunghezza variabile,
+  il carattere \0 viene utilizzato per indicare la fine di una stringa.
+  In questo modo, se abbiamo una stringa dichiarata di 50 caratteri
+  (char name[50];), e la utilizziamo per memorizzare il nome "Dave", il
+  suo contenuto (a partire da sinistra) sara' la parola Dave immediatamente 
+  seguita dal segno di fine stringa \0, e quindi tutti gli altri caratteri 
+  (fino ad arrivare alla lunghezza di 50) risulteranno vuoti.
+
+
+
+FONTE: http://www.science.unitn.it/~fiorella/guidac/guidac018.html#:~:text=Per%20stampare%20una%20stringa%20si,la%20fine%20di%20una%20stringa.INTRODUZIONE ALLA PROGRAMMAZIONE IN C
+
+Stringhe
+
+
+  In C le stringhe sono definite come array di caratteri. Ad esempio, la
+  seguente istruzione definisce una stringa di 50 caratteri:
+   
+      char name[50];
+   
+  Il C non ha pero' un sistema maneggevole per costruire le stringhe, cosi 
+  le seguenti assegnazioni non sono valide:
+      char firstname[50], lastname[50], fullname[50];
+      firstname = "Mario"                    /* illegale */
+      lastname  = "Rossi"                    /* illegale */
+      fullname  = "Sig."+firstname+lastname  /* illegale */
+ 
+  Esiste pero' una libreria di routines per il trattamento delle stringhe
+  ("< string.h >").
+
+  Per maneggiare le stringhe si possono usare puntatori ad array di char 
+  (come vedremo piu' avanti).
+  
+  Per stampare una stringa si usa printf() con lo speciale carattere di 
+  controllo %s:
+  
+      printf("%s",nome);   
+
+  Nota: e' sufficiente avere il nome della stringa.
+
+  Al fine di permettere l'utilizzo di stringhe con lunghezza variabile,
+  il carattere \0 viene utilizzato per indicare la fine di una stringa.
+  In questo modo, se abbiamo una stringa dichiarata di 50 caratteri
+  (char name[50];), e la utilizziamo per memorizzare il nome "Dave", il
+  suo contenuto (a partire da sinistra) sara' la parola Dave immediatamente 
+  seguita dal segno di fine stringa \0, e quindi tutti gli altri caratteri 
+  (fino ad arrivare alla lunghezza di 50) risulteranno vuoti.
+
+
+
+FONTE: http://www.science.unitn.it/~fiorella/guidac/guidac018.html#:~:text=Per%20stampare%20una%20stringa%20si,la%20fine%20di%20una%20stringa.
