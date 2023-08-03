@@ -1,0 +1,135 @@
++----------------------------------------------------------+
+|           Array in C - Definizione e Utilizzo            |
++----------------------------------------------------------+
+|                                                          |
+|                Definizione e Dichiarazione               |
+|                                                          |
+| // Array di caratteri (stringa)                          |
+| char myString[] = "Hello";                               |
+|                                                          |
+| // Array di interi                                       |
+| int myNumbers[] = {1, 2, 3, 4, 5};                       |
+|                                                          |
+|                                                          |
+|                    Utilizzo                              |
+|                                                          |
+| // Accesso agli elementi dell'array                      |
+| char firstChar = myString[0];                            |
+| int thirdNumber = myNumbers[2];                          |
+|                                                          |
+| // Assegnazione di valori ai singoli elementi dell'array |
+| myString[1] = 'a';                                       |
+| myNumbers[3] = 10;                                       |
+|                                                          |
+|                                                          |
+|                    Cicli while                           |
+|                                                          |
+| // Iterazione attraverso l'array di caratteri            |
+| int i = 0;                                               |
+| while (myString[i] != '\0') {                            |
+|     // ... fa quAlcOsa cOn myString[i] ...               |
+|     i++;                                                 |
+| }                                                        |
+|                                                          |
+| // Iterazione attraverso l'array di interi               |
+| int j = 0;                                               |
+| while (j < 5) {                                          |
+|     // ... fa qualcosa con myNumbers[j] ...              |
+|     j++;                                                 |
+| }                                                        |
+|                                                          |
+|                                                          |
+|               Altri Utilizzi sugli Array                 |
+|                                                          |
+| // Inversione dell'array di caratteri                    |
+| int len = 0;                                             |
+| while (myString[len] != '\0') {                          |
+|     len++;                                               |
+| }                                                        |
+| int start = 0;                                           |
+| int end = len - 1;                                       | 
+| while (start < end) {                                    |
+|     char temp = myString[start];                         |
+|     myString[start] = myString[end];                     |
+|     myString[end] = temp;                                |  
+|     start++;                                             |
+|     end--;                                               |
+| }                                                        |
+|                                                          |
+| // Somma degli elementi dell'array di interi             |
+| int sum = 0;                                             |
+| int k = 0;                                               |
+| while (k < 5) {                                          |
+|     sum += myNumbers[k];                                 |
+|     k++;                                                 |
+| }                                                        |
+|                                                          |
++----------------------------------------------------------+
+\+----------------------------------------------------------+
+|           Array in C - Definizione e Utilizzo           |
++----------------------------------------------------------+
+|                                                          |
+|                Definizione e Dichiarazione               |
+|                                                          |
+| // Array di caratteri (stringa)                          |
+| char myString[] = "Hello";                               |
+|                                                          |
+| // Array di interi                                       |
+| int myNumbers[] = {1, 2, 3, 4, 5};                       |
+|                                                          |
+|                                                          |
+|                    Utilizzo                              |
+|                                                          |
+| // Accesso agli elementi dell'array                      |
+| char firstChar = myString[0];                            |
+| int thirdNumber = myNumbers[2];                          |
+|                                                          |
+| // Assegnazione di valori ai singoli elementi dell'array |
+| myString[1] = 'a';                                       |
+| myNumbers[3] = 10;                                       |
+|                                                          |
+|                                                          |
+|                    Cicli while                           |
+|                                                          |
+| // Iterazione attraverso l'array di caratteri            |
+| int i = 0;                                               |
+| while (myString[i] != '\0') {                            |
+|     // ... fa qualcosa con myString[i] ...               |
+|     i++;                                                 |
+| }                                                        |
+|                                                          |
+| // Iterazione attraverso l'array di interi               |
+| int j = 0;                                               |
+| while (j < 5) {                                          |
+|     // ... fa qualcosa con myNumbers[j] ...              |
+|     j++;                                                 |
+| }                                                        |
+|                                                          |
+|                                                          |
+|               Altri Utilizzi sugli Array                 |
+|                                                          |
+| // Inversione dell'array di caratteri                    |
+| int len = 0;                                             | 
+| while (myString[len] != '\0') {                          |
+|     len++;                                               | 
+| }                                                        |
+| int start = 0;                                           |
+| int end = len - 1;                                       |
+| while (start < end) {                                    |
+|     char temp = myString[start];                         |
+|     myString[start] = myString[end];                     |
+|     myString[end] = temp;                                |
+|     start++;                                             |
+|     end--;                                               |
+| }                                                        |
+|                                                          |
+| // Somma degli elementi dell'array di interi             |
+| int sum = 0;                                             |
+| int k = 0;                                               |
+| while (k < 5) {                                          |
+|     sum += myNumbers[k];                                 |
+|     k++;                                                 |
+| }                                                        |
+|                                                          |
++----------------------------------------------------------+
+

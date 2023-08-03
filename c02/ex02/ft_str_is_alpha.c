@@ -1,80 +1,34 @@
 #include <unistd.h>
 
-int	ft_str_is_alpha(char *str)
-
-{
-	int i = 0;
-
-	if (str[0] == '\0')
-		return 1;
-
-	while (str[i] != '\0')
-	{
-
-		if(!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))
-			return 0;
-		i++;
-	}
-	return 1;
+int	ft_str_is_alpha(char *str); 
+				//  NOTA: IL TRAGUARDO E' STAMPARE 1 SE I CARATTERI PASSATI NELL\ARRAY SONO LETTERE 
+{				//
+	int i = 0;		// VARIABILE intero i [INFORMAZIONE]
+				//
+				//
+	if (str[0] == '\0')	// SE//[LA STRINGA s CON VALORE 0 è UGUALE ALL\ULTIMO CARATTERE >>
+	{			//	
+		return (1);	// >> RESTITUISCO 1] 
+	}			//
+				//     --->[SE str NON HA CARATTERI TERMINA LA FUNZIONE ft_str_is_alpha]
+				//
+				//
+				//  								  __   __   __   __
+	while (str[i] != '\0')  // MENTRE//[L\ARRAY SCORRE INFORMAZIONI FINO L'ULTIMO CARATTERE  [i+] [__] [__] [\0]
+				//
+	{       ////| TUTTO IL RISULTATO VIENE INVERTITO >> SE i E' COMPRESO TRA 'A\a' A 'Z\z' >> SE i NON E' COMPRESO TRA 'A\a' E 'Z\z' |\\\\
+		////|(---------------COMPRENDE ENTRAMBE LE RICHIESTE----------------------)|	 // _________________________________________
+		////|---------------------------------------------------------------------------// >> IL PUNTO ESCLAMATIVO INVERTE TUTTO IL >>
+		if (!((str[i] >= 'a' && str[i] <= 'z') || (str[i] >= 'A' && str[i] <= 'Z')))   // >> RISULTATO DELL\OPERAZIONE DIVENTA QUINDI >>
+		{	return (0);                                                       // >> SE IL VALORE CONTROLLATO NON E' UNA LETTERA >>
+			i++;       // SCORRI AL PROSSIMO ARGOMENTO ->			  // >>                                   RITORNA 0 <<
+		}		  //  SE i AVRA' RAGGIUNTO '\0' LA FUNZIONE ANDRA' AVANTII//
+											  //
+											  //  
+											  // 
+	}										  //
+	return (1);	// SE LA FUNZIONE HA CONTROLLATO TUTTI I VALORI DI arr		  //  
+			// TRAMITE i SENZA AVER TROVATO !LETTERE RITORNA 1		  //
 }
 
-int	main()
-{
-	char str1[] = "HelloWorld";
-	char str2[] = "123abc";
-	char str3[] = "abcd$%";
-	char str4[] = "";
-	int i = 0;
-	int i2 = 0;
-	int i3 = 0;
-	int i4 = 0;
-	
-	while (str1[i] != '\0')
-	{
-		i++;
-	}
-	write(1, &str1, i);	
-	if (ft_str_is_alpha(str1))
-		write(1, "\nstr1 contiene solo caratteri alfabetici\n\n", 42);
-	else
-		write(1, "\nstr1 contiene caratteri non alfabetic\n\n", 40);
 
-	while (str2[i2] != '\0')
-	{
-		i2++;
-	}
-	write(1, &str2, i2);
-	
-	if (ft_str_is_alpha(str2))
-		write(1, "\nstr2 contiene solo caratteri alfabetici\n\n", 42);
-	else
-		write(1, "\nstr2 contiene caratteri non alfabetici\n\n", 42);
-	
-	while (str3[i3] != '\0')
-	{
-		i3++;
-	}
-	write(1, &str3, i3);
-	
-	if (ft_str_is_alpha(str3))
-		write(1, "\nstr3 contiene solo caratteri alfabetici\n", 41);
-	else
-		write(1, "\nstr3 contiene caratteri non alfabetici\n", 40);
-	
-	
-	while (str4[i4] != '\0')
-	{
-		i4++;
-	}
-	write(1, &str4, i4);
-
-	
-	if (ft_str_is_alpha(str4))
-		write(1, "\nstr4 contiene solo caratteri alfabetici\n\n", 42);
-	else
-		write(1, "\nstr4 contiene caratteri non alfabetici\n\n", 41);
-
-	
-	
-	return 0;
-}
