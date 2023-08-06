@@ -1,71 +1,79 @@
 #include <unistd.h>
 
-void	print_hex(unsigned char c)
-
+void	ft_putchar(char	c)
 {
-	char	hex[2];
-	hex[0] = "0123456789abcdef"[c / 16];
-	hex[1] = "0123456789abcdef"[c % 16];
-
-	write(1, hex, 2);
+	write(1, &c, 1);
 }
 
-void	print_printable_char(unsigned char c)
+void	ft_print_hex(unsigned char c)
 {
-	char printable;
+	char	*hex;
+
+	hex = "0123456789abcdef";
+	ft_putchar(hex[c / 16]);
+	ft_putchar(hex[c % 16]);
+}
+
+void	ft_print_ascii(unsigned char c)
+{
 	if (c >= 32 && c <= 126)
-		printable = c;
+		ft_putchar(c);
 	else
-		printable = '.';
-	write(1, &printable, 1);
+		ft_putchar('.');
 }
-void	*ft_print_memory(void *addr, unsigned int size)
 
-{	// Stampa l'indirizzo in esadecimale
-	unsigned char *ptr = (unsigned char *)addr;
-	unsigned int i = 0;
-	unsigned int col;
+void	ft_print_line(unsigned char *ptr, unsigned int size, unsigned int i)
+{
+	unsigned int	j;
 
+	j = 0;
+	while (j < 16 && i + j < size)
+	{
+		ft_print_hex(ptr[i + j]);
+		if ((j + 1) % 2 == 0)
+			ft_putchar(' ');
+		j++;
+	}
+	ft_putchar(' ');
+	j = 0;
+	while (j < 16 && i + j < size)
+	{
+		ft_print_ascii(ptr[i + j]);
+		j++;
+	}
+	ft_putchar('\n');
+}
+
+void	ft_print_memory(void *addr, unsigned int size)
+{
+	unsigned char	*ptr;
+	unsigned int	i;
+	unsigned int	j;
+
+	ptr = (unsigned char *)addr;
+	i = 0;
 	while (i < size)
 	{
-		print_hex((unsigned long long)&ptr[i]);
-		write(1, ":", 2);
-		// Stampa il contenuto in esadecimale
-		col = 0;
-		
-		while (col < 16 && i + col < size)
+		ft_print_hex(ptr[i]);
+		ft_putchar(':');
+		if ((i + 16) <= size)
+			ft_print_line(ptr, size, i);
+		else
 		{
-			print_hex(ptr[i + col]);
-			if (col % 2 == 1)
-				write(1, " ", 1);
-			col++;
+			j = 0;
+			while (j++ < 16 - (size - i))
+				write(1, "   ", 3);
+			ft_print_line(ptr, size, i);
 		}
-		// Riempie con spazi se necessario
-		while (col < 16)
-		{
-			write(1, " ", 2);
-			if (col % 2 == 1)
-				write(1, " ", 1);
-			col++;
-		}
-		// Stampa il contenuto stampabile
-		col = 0;
-		while (col < 16 && i + col < size)
-		{
-			print_printable_char(ptr[i + col]);
-			col++;
-		}
-
-		write(1, "\n", 1);
 		i += 16;
 	}
-	return addr;
 }
+
 #include <stdio.h>
 
 int	main()
 {
-	char str[] = "Bonjour les amin ches...c. est fo u.tout.ce qu on u.tout.ce qu on ..lol.lol. .";
+	char	str[] = "Bonjour les amin ches...c.estfou.tout.cequon ..lol.lol. .";
 	ft_print_memory(str, sizeof(str) - 1);
-	return 0;
+	return (0);
 }
