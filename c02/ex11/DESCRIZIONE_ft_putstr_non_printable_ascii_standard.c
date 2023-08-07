@@ -1,4 +1,4 @@
-#include <unistd.h>
+#include <unistd.h>	/		     //CONVERSIONE ASCII ESTESO [0\256] SONO 129 CARATTERI IN PIU'!
 
 void	ft_putstr_non_printable(char *str) //LA FUNZIONE ft_putstr_non_printable
 {					  //CONVERTE I CARATTERI NON STAMPABILI
@@ -7,7 +7,7 @@ void	ft_putstr_non_printable(char *str) //LA FUNZIONE ft_putstr_non_printable
 	i = 0;			       //AVVIENE CALCOLANDO SEPARATAMENTE I PRIMI 4 bit E GLI ULTIMI 4 bit
 	while (str[i] != '\0')	      //DEL VALORE ESADECIMALE DEL CARATTERE E POI UTILIZZANDO LA STRINGA
 	{			     ////////////////"0123456789abcdef" PER OTTENERE I CORRISPONDENTI
-		if (str[i] >= 32 && str[i] <= 126)//IN CARATTERI ESADECIMALI!
+		if (str[i] >= 32 && str[i] <= 126 || str[i] >= 128)//IN CARATTERI ESADECIMALI!
 		{				 //SE IL CARATTERE E' COMPRESO TRA I CARATTERI STAMPABILI
 			write(1, &str[i], 1);   //SCRIVI IL CARATTERE DELLA STRINGA
 		}			       //

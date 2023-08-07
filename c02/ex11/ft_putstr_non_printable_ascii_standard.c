@@ -3,21 +3,19 @@
 void	ft_putstr_non_printable(char *str)
 {
 	int	i;
-	unsigned char	c; 
 
 	i = 0;
 	while (str[i] != '\0')
 	{
-		c = (unsigned char)str[i];	// CONVERTO IL CARATTERE CORRENTE IN unsigned char
-		if ((c >= 32 && c <= 126) || c >= 128) // SE IL CARATTERE E' STAMPABILE! [ASCII ESTESO]
+		if ((str[i] >= 32 && str[i] <= 126) || (str[i] >= 128 && str[i] <= 256))
 		{
-			write(1, &c, 1);
+			write(1, &str[i], 1);
 		}
 		else
 		{
-			write(1, "\\", 1); // SCRIVO UNA BARRA ROVESCIATA
-			write(1, &"0123456789abcdef"[c / 16], 1);
-			write(1, &"0123456789abcdef"[c % 16], 1);
+			write(1, "\\", 1);
+			write(1, &"0123456789abcdef"[str[i] / 16], 1);
+			write(1, &"0123456789abcdef"[str[i] % 16], 1);
 		}
 		i++;
 	}
@@ -27,7 +25,7 @@ void	ft_putstr_non_printable(char *str)
 int	main()
 {
 	char	str1[] = "\033[31mHello\033[0m\f\t\n";
-	char	str2[] = "Testèé§çàò\x7F%stringa";
+	char	str2[] = "Test\x7F%stringa";
 	printf("\n\n");
 	printf("Stringa originale 1 -> %s\n\t", str1);
 	printf(" <- stringa modificata");

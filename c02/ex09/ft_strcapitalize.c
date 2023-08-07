@@ -19,7 +19,9 @@ char	*ft_strcapitalize(char *str)
 			str[i] = str[i] + 32;
 		}
 		// IMPOSTA IL FLAG capitalize_next PER IL PROSSIMO CARATTERE
-		if (str[i] == ' ' || str[i] == '-' || str[i] == '+')
+		if (str[i] >= 32 && str[i] <= 64
+				|| str[i] >=  91 && str[i] <= 96
+				|| str[i] >= 123 && str[i] <= 127)
 		{
 			capitalize_next = 1;
 		}
@@ -34,7 +36,7 @@ char	*ft_strcapitalize(char *str)
 
 int	main()
 {
-	char	str[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	char	str[] = "salut,c}omm[ent tu|vas ?o 42mots_quarante-deux;cinquante+et^un";
 
 	write(1, "Input string: ", 14);
 	write(1, str, sizeof(str) - 1); // -1 PER NON INCLUDERE IL CARATTERE NULL TERMINATOR

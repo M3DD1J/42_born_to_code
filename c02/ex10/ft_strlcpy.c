@@ -19,11 +19,11 @@ unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
 	}
 
 	// AGGIUNGIAMO IL CARATTERE NULLO DI TERMINAZIONE
-	if (size > 0)
-	{
+	
+	
 		dest[i] = '\0';
-	}
-	return src_len;
+	
+	return i;
 }
 
 #include <stdio.h>
