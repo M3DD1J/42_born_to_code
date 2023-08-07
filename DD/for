@@ -1,0 +1,17 @@
+Cosa è il "for" e come funziona?
+Il "for" è un altro costrutto di controllo in C, simile al "while" ma con una sintassi più compatta e specifica per l'esecuzione di un blocco di codice per un numero definito di volte. La struttura generale del "for" è la seguente:
+
+
+
+// for (inizializzazione; condizione; incremento/decremento) {
+// for (int i = 0; i < len; i++)
+// Blocco di codice da eseguire ripetutamente finché la condizione è vera
+// }
+
+
+La sequenza di esecuzione di un ciclo "for" è la seguente:
+
+Viene eseguita l'inizializzazione una sola volta all'inizio.
+La condizione viene verificata all'inizio di ogni iterazione. Se è vera, il blocco di codice nel for viene eseguito.
+Dopo l'esecuzione del blocco di codice, viene eseguito l'incremento/decremento.
+Si ritorna al passo 2 fino a quando la condizione diventa falsa, a quel punto il ciclo "for" termina.

@@ -1,0 +1,65 @@
+				INTRODUZIONE ALLA PROGRAMMAZIONE IN C
+
+
+Printf
+
+
+  La funzione e' definita come segue:
+
+     int printf(char *format, arg list ...)
+
+  e stampa sullo stdout la lista di argomenti conformemente alla stringa di
+  formato specificata. Ritorna il numero di caratteri stampati.
+
+  La stringa di formato ha 2 tipi di oggetti:
+
+
+ caratteri ordinari            - questi vengono copiati in output;
+ specificazioni di conversione - contraddistinte da "%" e di seguito 
+                                 elencate.
+
+  La seguente tabella mostra i possibili formati dei caratteri per le
+  istruzioni printf/scanf:
+
+   Formato (%)    Tipo            Risultato
+  --------------------------------------------------------------------------
+       c          char            singolo carattere
+      i,d         int             numero decimale
+       o          int             numero ottale
+      x,X         int             numero esadecimale
+                                  (notazione maiuscola o minuscola)
+       u          int             intero senza segno
+       s          char *          stampa una stringa terminata con \0
+       f          double/float    formato -m.ddd...
+      e,E           "             formato scientifico
+				  -1.23e002
+      g,G           "             "e" o "f" ma piu' compatti
+       %            -             stampa il carattere %
+  --------------------------------------------------------------------------
+
+  Tra il simbolo % ed il carattere di formato, e' possibile mettere:
+
+     - (segno meno)         - giustificazione a sinistra;
+     numero intero          - ampiezza del campo
+     m.d                    - m=ampiezza del campo, d=precisione del numero
+                              di cifre dopo il punto decimale, o numero di
+                              caratteri da una stringa
+
+  Cosi', ad esempio, potremo avere:
+
+     printf("%-2.3f\n",17.23478);
+
+  e l'output a video sara':
+
+     17.235
+
+  e:
+
+     printf("VAT=17.5%%\n");
+
+  dove l'output sara':
+
+     VAT=17.5%
+
+
+FONTE: http://www.science.unitn.it/~fiorella/guidac/guidac067.html
