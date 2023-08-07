@@ -13,7 +13,7 @@ char	*ft_strcpy(char *dest, char *src)
 	*dest = '\0';
 	return (start);
 }
-
+/*
 #include <stdio.h>
 int	main()
 {
@@ -28,3 +28,4 @@ int	main()
 	printf("new dest-> %s\n", dest);
 	return (0);
 }
+*/

@@ -21,7 +21,7 @@ int	ft_str_is_uppercase(char *str)
 	}
 	return 1;
 }
-
+/*
 int	main()
 {
 	char str1[] = "Hello, World!";
@@ -102,4 +102,5 @@ int	main()
 		write(1, "\ncontiene altri caratteri\n", 27);
 	}
 	return 0;
-}                                                                                                                                                                                                                                                                                         
+}                                                                                                                                                                                                                                                                                 
+*/
